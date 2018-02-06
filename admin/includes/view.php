@@ -1,7 +1,6 @@
 <table class='table table-bordered'>
     <thead>
         <tr>
-          <th>id</th>
           <th>Author</th>
           <th>Title</th>
           <th>Category</th>
@@ -22,7 +21,15 @@
             echo "<tr>";
             echo "<td>{$row['post_author']}</td>";
             echo "<td>{$row['post_title']}</td>";
-            echo "<td>{$row['post_category_id']}</td>";
+            
+            $cat_query = "SELECT cat_title FROM category WHERE cat_id = {$row['post_category_id']}";
+            $cat_result = mysqli_query($connect, $cat_query);
+            while($cat_row = mysqli_fetch_assoc($cat_result))
+            {
+                $cat_title = $cat_row['cat_title'];
+            }
+            
+            echo "<td>{$cat_title}</td>";
             echo "<td>{$row['post_status']}</td>";
             echo "<td><img class='img-responsive' src='../images/{$row['post_image']}'></td>";
             echo "<td>{$row['post_tags']}</td>";
