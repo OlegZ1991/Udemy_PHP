@@ -1,13 +1,4 @@
 <?php
-function select_images()
-{
-    global $connect;
-    $query_pic = "SELECT*FROM posts";
-    $result_posts = mysqli_query($connect, $query_pic);
-    while($row = mysqli_fetch_assoc($result_posts)) {
-        echo "<img class='img-responsive' src='images/{$row['post_image']}' alt=''>";
-    }
-}
 function select_categories()
 {
     global $connect;
