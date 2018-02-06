@@ -13,7 +13,7 @@
     </thead>
     <tbody>
           
-           <?php
+        <?php
         $query = "SELECT*FROM posts";
         $result = mysqli_query($connect, $query);
         while($row = mysqli_fetch_assoc($result))
@@ -39,6 +39,6 @@
             echo "<td><a href='?source=delete_post'>Delete</a></td>";
             echo "</tr>";
         }
-                ?>
+        ?>
     </tbody>
 </table>
