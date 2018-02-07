@@ -1,3 +1,4 @@
+<?php include "../functions.php";?>
 <?php include "includes/admin_header.php";?>
     <div id="wrapper">
         <!-- Navigation -->
@@ -24,6 +25,9 @@
                             break;
                         case 'edit_post':
                             include 'includes/edit_post.php';
+                            break;
+                        case 'delete_post':
+                            delete_post();
                             break;
                         default: include 'includes/view.php';
                     }

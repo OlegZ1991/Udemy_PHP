@@ -36,7 +36,7 @@
             echo "<td>{$row['post_comment_count']}</td>";
             echo "<td>{$row['post_date']}</td>";
             echo "<td><a href='?source=edit_post&get_post_id={$row['post_id']}'>Edit</a></td>";
-            echo "<td><a href='?source=delete_post'>Delete</a></td>";
+            echo "<td><a href='?source=delete_post&get_post_id={$row['post_id']}''>Delete</a></td>";
             echo "</tr>";
         }
         ?>

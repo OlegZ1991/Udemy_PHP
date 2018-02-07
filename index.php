@@ -17,6 +17,7 @@
                     $select_all_posts = "SELECT*FROM posts";
                     $result_posts = mysqli_query($connect, $select_all_posts);
                     while($row = mysqli_fetch_assoc($result_posts)):
+                        $post_id          = $row['post_id'];
                         $post_category_id = $row['post_category_id'];
                         $post_title       = $row['post_title'];
                         $post_author      = $row['post_author'];
@@ -27,7 +28,7 @@
                         $post_date        = $row['post_date'];
                 ?>
                 <h2>
-                    <a href="#"><?php echo $post_title;?></a>
+                    <a href="post.php?p_id=<?php echo $post_id;?>"><?php echo $post_title;?></a>
                 </h2>
                 <p class="lead">
                     by <a href="index.php"><?php echo $post_author;?></a>

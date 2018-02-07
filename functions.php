@@ -72,7 +72,7 @@ function add_categories()
 function add_post()
 {
     global $connect;
-    $post_category_id = $_POST['post_category_id'];
+    $post_category = $_POST['post_category'];
     $post_title = $_POST['post_title'];
     $post_author = $_POST['post_author'];
     $post_content = $_POST['post_content'];
@@ -92,11 +92,19 @@ function add_post()
     //Attention! end New knoledges 31.01.2018:
     
     $query    = "INSERT INTO posts(post_category_id, post_title, post_author, post_content, post_date, post_image, post_comment_count, post_tags, post_status) ";
-    $query   .=  "VALUES({$post_category_id},'{$post_title}','{$post_author}','{$post_content}',now(), '{$post_image}',{$post_comment_count},'{$post_tags}','{$post_status}')";////Mistacke detected: {$post_image}->'{$post_image}'.
+    $query   .=  "VALUES({$post_category},'{$post_title}','{$post_author}','{$post_content}',now(), '{$post_image}',{$post_comment_count},'{$post_tags}','{$post_status}')";////Mistacke detected: {$post_image}->'{$post_image}'.
     
     if(!$insert_posts = mysqli_query($connect, $query))
     {
         echo "query failed. info:". mysqli_get_host_info($connect);
     }
+}
+function delete_post()
+{
+    global $connect;
+    $delete_post_by_id = $_GET['get_post_id'];
+    $delete_post = "DELETE FROM posts WHERE post_id={$delete_post_by_id}";
+    $post_del_query = mysqli_query($connect, $delete_post);
+    header('Location: posts.php');
 }
 ?>

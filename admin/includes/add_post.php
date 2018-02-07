@@ -7,8 +7,17 @@ if(isset($_POST['add_post']))
 ?>    
 <form action="" method="post" enctype='multipart/form-data'> <!--Mistacke detected: 'name_tmp'->'tmp_name'.-->
    <div class="form-group">
-        <label for="post_category_id">post_category_id
-            <input type="text" name='post_category_id'class='form-control'>
+        <label for="post_category">post_category
+            <select class='select' name="post_category" id="">
+                <?php
+                $select_cat = "SELECT * FROM category";
+                $result_cat = mysqli_query($connect, $select_cat);
+                    while($row_cat = mysqli_fetch_assoc($result_cat))
+                    {
+                        echo "<option value={$row_cat['cat_id']}>{$row_cat['cat_title']}</option>";
+                    }
+                ?>
+            </select>
         </label>
     </div>
     <div class="form-group">
