@@ -22,11 +22,11 @@
                         <div class="col-lg-12">
                             <ul class="list-unstyled">
                             <?php
-                                $query = "SELECT cat_title FROM category LIMIT 3";
+                                $query = "SELECT*FROM category";
                                 $result = mysqli_query($connect, $query);
                                 while($row = mysqli_fetch_assoc($result)):
                                 ?>
-                                <li><a href="#"><?php echo $row['cat_title'];?></a>
+                                <li><a href="categories.php?get_cat_id=<?php echo $row['cat_id'];?>"><?php echo $row['cat_title'];?></a>
                                 </li>
                                 <?php endwhile;?>
                             </ul>

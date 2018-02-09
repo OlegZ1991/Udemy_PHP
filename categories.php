@@ -14,14 +14,16 @@
                 </h1>
                 <!-- The Blog Post -->
                 <?php
-                    $select_all_posts = "SELECT*FROM posts";
+                    if(isset($_GET['get_cat_id'])):
+                    $get_cat_id = $_GET['get_cat_id'];
+                    $select_all_posts = "SELECT*FROM posts WHERE post_category_id = {$get_cat_id}";
                     $result_posts = mysqli_query($connect, $select_all_posts);
                     while($row = mysqli_fetch_assoc($result_posts)):
                         $post_id          = $row['post_id'];
                         $post_category_id = $row['post_category_id'];
                         $post_title       = $row['post_title'];
                         $post_author      = $row['post_author'];
-                        $post_content     = substr($row['post_content'], 0, 5);//this function returns the substring of the 1-st argument. 2-st argument is the start of the substring. 3-rd argument is the length of the substring
+                        $post_content     = $row['post_content'];
                         $post_image       = $row['post_image'];
                         $post_status      = $row['post_status'];
                         $post_tags        = $row['post_tags'];
@@ -41,6 +43,7 @@
                 <a class="btn btn-primary" href="#">Read More<span class="glyphicon glyphicon-chevron-right"></span></a>
                 <hr>
                 <?php endwhile;?>
+                <?php endif;?>
             </div>
             
             <!-- Blog Sidebar Widgets Column -->
